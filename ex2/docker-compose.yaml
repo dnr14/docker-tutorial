@@ -1,0 +1,29 @@
+version: '3'
+services:
+  client:
+    build: 
+      dockerfile: dockerfile
+      context: ./client
+    volumes:
+      - ./client/:/app
+      - /app/node_modules
+    networks:
+      - backend
+  server:
+    build: 
+      dockerfile: dockerfile
+      context: ./server
+    volumes:
+      - ./server/:/app
+      - /app/node_modules
+    networks:
+      - backend
+    ports:
+      - "3000"
+  nginx:
+    restart: always
+    build: 
+      dockerfile: dockerfile
+      context: ./nginx
+    ports:
+      - "80:80"

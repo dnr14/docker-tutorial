@@ -1,0 +1,16 @@
+version: '3'
+services:
+  proxy:
+    build:
+      context: ./client
+    container_name: proxy
+    ports:
+      - "80:80"
+    restart: "unless-stopped"
+  server:
+    build:
+      context: ./server
+    container_name: express
+    ports:
+      - "3000"
+    restart: "unless-stopped"

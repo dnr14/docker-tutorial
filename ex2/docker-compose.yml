@@ -11,6 +11,6 @@ services:
     build:
       context: ./server
     container_name: express
-    ports:
+    expose:
       - "3000"
     restart: "unless-stopped"
